@@ -13,9 +13,15 @@ kubectl create namespace argocd
 ## 2. ArgoCD Kurulumunun Yapılması
 
 ```
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.1.3/manifests/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
 ```
 
+
+* Version kontrol edilebilir.
+```
+kubectl get deployment argocd-server -n argocd -o=jsonpath='{.spec.template.spec.containers[0].image}' | cut -d':' -f2
+```
 
 
 ## 3. ArgoCD Admin Şifresinin Alınması
@@ -46,4 +52,7 @@ kubectl apply -f application.yaml
 
 
 ### Kaynaklar
-ArgoCD Resmi Dökümantasyonu: https://argo-cd.readthedocs.io/en/stable/getting_started/
+
+* ArgoCD Resmi GitHub Reposu  : https://github.com/argoproj/argo-cd
+
+* ArgoCD Resmi Dökümantasyonu : https://argo-cd.readthedocs.io/en/stable/getting_started/
